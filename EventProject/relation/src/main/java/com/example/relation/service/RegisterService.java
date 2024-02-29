@@ -77,6 +77,16 @@ public class RegisterService {
         RegisterModel r = registerRepo.findByUserName(userName);
         return r; 
     }
+
+    public List<RegisterModel> getSortedList(String field) {
+        return registerRepo.findAll(Sort.by(Sort.Direction.DESC, field));
+    }
+
+
+     public List<RegisterModel> getPageList(int offset, int pagesize) {
+        Page<RegisterModel> k = registerRepo.findAll(PageRequest.of(offset, pagesize));
+        return k.getContent();
+    }
     
 
 
