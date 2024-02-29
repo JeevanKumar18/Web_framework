@@ -89,4 +89,14 @@ public class RegisterController {
        
         
     }
+
+    @GetMapping("/reg/sortBy/{field}")
+    public List<RegisterModel> sortByRate(@PathVariable("field") String field) {
+        return registerService.getSortedList(field);
+    }
+
+    @GetMapping("/reg/pagination/{offset}/{pagesize}")
+    public List<RegisterModel> getMethodName1(@PathVariable("offset") int offset,@PathVariable("pagesize") int pagesize) {
+        return registerService.getPageList(offset,pagesize);
+    }
 }
